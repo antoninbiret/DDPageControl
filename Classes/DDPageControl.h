@@ -19,6 +19,12 @@ typedef enum
 }
 DDPageControlType ;
 
+typedef enum {
+    DDPageControlFillingModeCurrent,
+    DDPageControlFillingModePrevious
+}
+DDPageControlFillingMode ;
+
 
 @interface DDPageControl : UIControl 
 {
@@ -50,6 +56,8 @@ DDPageControlType ;
 
 @property (nonatomic) CGFloat indicatorDiameter ;
 @property (nonatomic) CGFloat indicatorSpace ;
+
+@property (nonatomic) DDPageControlFillingMode fillingMode;
 
 @end
 

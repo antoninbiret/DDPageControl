@@ -25,6 +25,7 @@
 @synthesize offColor ;
 @synthesize indicatorDiameter ;
 @synthesize indicatorSpace ;
+@synthesize fillingMode;
 
 #pragma mark -
 #pragma mark Initializers - dealloc
@@ -47,6 +48,7 @@
 	if ((self = [super initWithFrame: CGRectZero]))
 	{
 		self.backgroundColor = [UIColor clearColor] ;
+        self.fillingMode = DDPageControlFillingModeCurrent;
 	}
 	return self ;
 }
@@ -93,7 +95,8 @@
 	{
 		CGRect dotRect = CGRectMake(x, y, diameter, diameter) ;
 		
-		if (i == currentPage)
+		if ((i == currentPage && fillingMode == DDPageControlFillingModeCurrent) ||
+            (i <= currentPage && fillingMode == DDPageControlFillingModePrevious))
 		{
 			if (type == DDPageControlTypeOnFullOffFull || type == DDPageControlTypeOnFullOffEmpty)
 			{
